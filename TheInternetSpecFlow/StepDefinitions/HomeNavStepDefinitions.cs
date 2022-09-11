@@ -4,6 +4,7 @@
     public class HomeNavStepDefinitions
     {
         private int _statusCode;
+        private int _numLinks;
         private readonly HomeNavPage _homeNav;
 
         public HomeNavStepDefinitions(BrowserDriver browserDriver)
@@ -15,14 +16,14 @@
         [Given("the links on the main section of the home page")]
         public void GivenTheLinksOnTheMainSectionOfTheHomePage()
         {
-            _homeNav.GetLinksOnHomePage();
+            _numLinks = _homeNav.GetNumberOfLinksOnHomePage();
         }
 
         // Test 1
         [Then("the count of the number of links on the home page should be (.*)")]
         public void TheCountOfTheNumberOfLinksShouldBe(int numLinks)
         {
-            _homeNav.GetNumberOfLinksOnHomePage().Should().Be(numLinks);
+            _numLinks.Should().Be(numLinks);
         }
 
         // Test 2
