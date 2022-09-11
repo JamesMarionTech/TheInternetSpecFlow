@@ -5,12 +5,12 @@ namespace TheInternetSpecFlow.Drivers
 {
     public class BrowserDriver : IDisposable
     {
-        private readonly IWebDriver _webDriver;
+        public readonly IWebDriver webDriver;
         private bool _isDisposed;
 
         public BrowserDriver()
         {
-            _webDriver = CreateWebDriver();
+            webDriver = CreateWebDriver();
         }
 
         private IWebDriver CreateWebDriver()
@@ -29,28 +29,8 @@ namespace TheInternetSpecFlow.Drivers
                 return;
             }
 
-            _webDriver.Quit();
+            webDriver.Quit();
             _isDisposed = true;
-        }
-
-        public string GetTitle()
-        {
-            return _webDriver.Title;
-        }
-
-        public void NavigateToURL(string URL)
-        {
-            _webDriver.Navigate().GoToUrl(URL);
-        }
-
-        public string GetURL()
-        {
-            return _webDriver.Url;
-        }
-
-        public List<IWebElement> FindElementsByCSSSelector(string selector)
-        {
-            return _webDriver.FindElements(By.CssSelector(selector)).ToList();
         }
     }
 }
