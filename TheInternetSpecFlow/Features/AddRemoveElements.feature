@@ -11,20 +11,22 @@ document.querySelector("#elements > button:first-child")
 
 @AddRemoveElements_Scenario
 Scenario: Clicking Add Element adds an element to the page
-    When I click on the Add Element button
-    Then the number of elements increases by 1
+    When the Add Element button is clicked
+    Then the number of elements should be 1
 
 @AddRemoveElements_Scenario
 Scenario: Clicking Delete removes an element from the page
-    When I click on the Delete button
-    Then the number of elements decreases by 1
+    Given an element was added to the page
+    When the Delete button is clicked
+    Then the number of elements should be 0
 
 @AddRemoveElements_Scenario
 Scenario: Clicking Add Element multiple times adds multiple elements to the page
-    When I click on the Add Element button 2 times
-    Then the number of elements increases by 2
+    When the Add Element button is clicked 2 times
+    Then the number of elements should be 2
 
 @AddRemoveElements_Scenario
 Scenario: Clicking Delete multiple times removes multiple elements from the page
-    When I click on the Delete button 2 times
-    Then the number of elements decreases by 2
+    Given 2 elements were added to the page
+    When the Delete buttons are clicked 2 times
+    Then the number of elements should be 0
