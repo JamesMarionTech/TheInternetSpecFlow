@@ -6,7 +6,6 @@ namespace TheInternetSpecFlow.Pages
     {
         private readonly BrowserDriver _browser;
         private readonly HttpClient _client;
-        private static List<IWebElement> _linksOnPage = new List<IWebElement>();
 
         public HomeNavPage(BrowserDriver browser)
         {
@@ -15,35 +14,25 @@ namespace TheInternetSpecFlow.Pages
         }
         public void GoToHomePage()
         {
-            _browser.NavigateToURL("http://127.0.0.1:7080/");
-            Assert.True(
-                _browser
-                .GetTitle()
-                .Equals("The Internet")
-            );
-        }
-
-        public void GetLinksOnHomePage()
-        {
-            if (_linksOnPage.Count == 0)
-            {
-                _linksOnPage = _browser.FindElementsByCSSSelector("ul a");
-            }
+            _browser.webDriver.Navigate().GoToUrl("http://127.0.0.1:7080/");
+            Assert.True(_browser.webDriver.Title.Equals("The Internet"));
         }
 
         public int GetNumberOfLinksOnHomePage()
         {
+            var _linksOnPage = _browser.webDriver.FindElements(By.CssSelector("ul a"));
             return _linksOnPage.Count;
         }
 
         public void HrefExistsOnHomePage(string page)
         {
-            Assert.Contains(_linksOnPage, a => a.GetAttribute("href") == _browser.GetURL() + page);
+            var _linksOnPage = _browser.webDriver.FindElements(By.CssSelector("ul a"));
+            Assert.Contains(_linksOnPage, a => a.GetAttribute("href") == _browser.webDriver.Url + page);
         }
 
         public int SendRequestToHref(string page)
         {
-            HttpResponseMessage response = _client.GetAsync(_browser.GetURL() + page).Result;
+            HttpResponseMessage response = _client.GetAsync(_browser.webDriver.Url + page).Result;
             return (int)response.StatusCode;
         }
     }
