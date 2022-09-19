@@ -7,7 +7,7 @@
         public static void BeforeFeature(BrowserDriver browserDriver)
         {
             var homeNavObject = new HomeNavPage(browserDriver);
-            homeNavObject.GoToHomePage();
+            homeNavObject.GoToPage();
         }
     }
 }
