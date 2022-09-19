@@ -10,23 +10,16 @@ The JavaScript to obtain the first Delete button:
 document.querySelector("#elements > button:first-child")
 
 @AddRemoveElements_Scenario
-Scenario: Clicking Add Element adds an element to the page
-    When the Add Element button is clicked
-    Then the number of elements should be 1
+Scenario Outline: Clicking Add and then Delete various amounts of times gives a certain number of elements on the page
+    Given <NumToAdd> elements were added to the page
+    When the Delete buttons are clicked <NumToDelete> times
+    Then the number of elements should be <NumRemaining>
 
-@AddRemoveElements_Scenario
-Scenario: Clicking Delete removes an element from the page
-    Given an element was added to the page
-    When the Delete button is clicked
-    Then the number of elements should be 0
-
-@AddRemoveElements_Scenario
-Scenario: Clicking Add Element multiple times adds multiple elements to the page
-    When the Add Element button is clicked 2 times
-    Then the number of elements should be 2
-
-@AddRemoveElements_Scenario
-Scenario: Clicking Delete multiple times removes multiple elements from the page
-    Given 2 elements were added to the page
-    When the Delete buttons are clicked 2 times
-    Then the number of elements should be 0
+Examples:
+    | NumToAdd | NumToDelete | NumRemaining |
+    | 1               | 0                  | 1                     |
+    | 2               | 0                  | 2                     |
+    | 2               | 1                  | 1                     |
+    | 5               | 0                  | 5                     |
+    | 3               | 2                  | 1                     |
+    | 5               | 5                  | 0                     |

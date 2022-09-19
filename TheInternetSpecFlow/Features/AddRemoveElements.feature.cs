@@ -90,16 +90,33 @@ document.querySelector(""#elements > button:first-child"")", ProgrammingLanguage
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Clicking Add Element adds an element to the page")]
+        [Xunit.SkippableTheoryAttribute(DisplayName="Clicking Add and then Delete various amounts of times gives a certain number of e" +
+            "lements on the page")]
         [Xunit.TraitAttribute("FeatureTitle", "AddRemoveElements")]
-        [Xunit.TraitAttribute("Description", "Clicking Add Element adds an element to the page")]
+        [Xunit.TraitAttribute("Description", "Clicking Add and then Delete various amounts of times gives a certain number of e" +
+            "lements on the page")]
         [Xunit.TraitAttribute("Category", "AddRemoveElements_Scenario")]
-        public virtual void ClickingAddElementAddsAnElementToThePage()
+        [Xunit.InlineDataAttribute("1", "0", "1", new string[0])]
+        [Xunit.InlineDataAttribute("2", "0", "2", new string[0])]
+        [Xunit.InlineDataAttribute("2", "1", "1", new string[0])]
+        [Xunit.InlineDataAttribute("5", "0", "5", new string[0])]
+        [Xunit.InlineDataAttribute("3", "2", "1", new string[0])]
+        [Xunit.InlineDataAttribute("5", "5", "0", new string[0])]
+        public virtual void ClickingAddAndThenDeleteVariousAmountsOfTimesGivesACertainNumberOfElementsOnThePage(string numToAdd, string numToDelete, string numRemaining, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "AddRemoveElements_Scenario"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Clicking Add Element adds an element to the page", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            argumentsOfScenario.Add("NumToAdd", numToAdd);
+            argumentsOfScenario.Add("NumToDelete", numToDelete);
+            argumentsOfScenario.Add("NumRemaining", numRemaining);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Clicking Add and then Delete various amounts of times gives a certain number of e" +
+                    "lements on the page", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 13
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -121,136 +138,13 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 14
-    testRunner.When("the Add Element button is clicked", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.Given(string.Format("{0} elements were added to the page", numToAdd), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 15
-    testRunner.Then("the number of elements should be 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.When(string.Format("the Delete buttons are clicked {0} times", numToDelete), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Clicking Delete removes an element from the page")]
-        [Xunit.TraitAttribute("FeatureTitle", "AddRemoveElements")]
-        [Xunit.TraitAttribute("Description", "Clicking Delete removes an element from the page")]
-        [Xunit.TraitAttribute("Category", "AddRemoveElements_Scenario")]
-        public virtual void ClickingDeleteRemovesAnElementFromThePage()
-        {
-            string[] tagsOfScenario = new string[] {
-                    "AddRemoveElements_Scenario"};
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Clicking Delete removes an element from the page", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 18
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 19
-    testRunner.Given("an element was added to the page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 20
-    testRunner.When("the Delete button is clicked", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 21
-    testRunner.Then("the number of elements should be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Clicking Add Element multiple times adds multiple elements to the page")]
-        [Xunit.TraitAttribute("FeatureTitle", "AddRemoveElements")]
-        [Xunit.TraitAttribute("Description", "Clicking Add Element multiple times adds multiple elements to the page")]
-        [Xunit.TraitAttribute("Category", "AddRemoveElements_Scenario")]
-        public virtual void ClickingAddElementMultipleTimesAddsMultipleElementsToThePage()
-        {
-            string[] tagsOfScenario = new string[] {
-                    "AddRemoveElements_Scenario"};
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Clicking Add Element multiple times adds multiple elements to the page", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 24
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 25
-    testRunner.When("the Add Element button is clicked 2 times", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 26
-    testRunner.Then("the number of elements should be 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Clicking Delete multiple times removes multiple elements from the page")]
-        [Xunit.TraitAttribute("FeatureTitle", "AddRemoveElements")]
-        [Xunit.TraitAttribute("Description", "Clicking Delete multiple times removes multiple elements from the page")]
-        [Xunit.TraitAttribute("Category", "AddRemoveElements_Scenario")]
-        public virtual void ClickingDeleteMultipleTimesRemovesMultipleElementsFromThePage()
-        {
-            string[] tagsOfScenario = new string[] {
-                    "AddRemoveElements_Scenario"};
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Clicking Delete multiple times removes multiple elements from the page", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 29
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 30
-    testRunner.Given("2 elements were added to the page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 31
-    testRunner.When("the Delete buttons are clicked 2 times", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 32
-    testRunner.Then("the number of elements should be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 16
+    testRunner.Then(string.Format("the number of elements should be {0}", numRemaining), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
