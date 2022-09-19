@@ -1,21 +1,16 @@
 ﻿using OpenQA.Selenium;
+using Xunit.Sdk;
 
 namespace TheInternetSpecFlow.Pages
 {
-    public class HomeNavPage
+    public class HomeNavPage : GeneralPage
     {
-        private readonly BrowserDriver _browser;
         private readonly HttpClient _client;
 
         public HomeNavPage(BrowserDriver browser)
+            : base(browser, "http://127.0.0.1:7080/")
         {
-            _browser = browser;
             _client = new HttpClient();
-        }
-        public void GoToHomePage()
-        {
-            _browser.webDriver.Navigate().GoToUrl("http://127.0.0.1:7080/");
-            Assert.True(_browser.webDriver.Title.Equals("The Internet"));
         }
 
         public int GetNumberOfLinksOnHomePage()

@@ -2,19 +2,11 @@
 
 namespace TheInternetSpecFlow.Pages
 {
-    public class AddRemoveElementsPage
+    public class AddRemoveElementsPage : GeneralPage
     {
-        private readonly BrowserDriver _browser;
-
         public AddRemoveElementsPage(BrowserDriver browser)
-        {
-            _browser = browser;
-        }
-        public void GoToPage()
-        {
-            _browser.webDriver.Navigate().GoToUrl("http://127.0.0.1:7080/add_remove_elements/");
-            Assert.True(_browser.webDriver.Title.Equals("The Internet"));
-        }
+            : base(browser, "http://127.0.0.1:7080/add_remove_elements/")
+        { }
 
         public void AddElement()
         {
