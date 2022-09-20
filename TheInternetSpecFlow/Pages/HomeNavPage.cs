@@ -8,7 +8,7 @@ namespace TheInternetSpecFlow.Pages
         private readonly HttpClient _client;
 
         public HomeNavPage(BrowserDriver browser)
-            : base(browser, "http://127.0.0.1:7080/")
+            : base(browser, "/")
         {
             _client = new HttpClient();
         }

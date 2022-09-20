@@ -4,10 +4,10 @@
     {
         protected readonly BrowserDriver _browser;
         private readonly string _url;
-        public GeneralPage(BrowserDriver browser, string url)
+        public GeneralPage(BrowserDriver browser, string path)
         {
             _browser = browser;
-            _url = url;
+            _url = "http://127.0.0.1:7080" + path;
         }
         public void GoToPage()
         {
