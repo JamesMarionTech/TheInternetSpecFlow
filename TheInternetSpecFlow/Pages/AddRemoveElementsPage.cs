@@ -5,7 +5,7 @@ namespace TheInternetSpecFlow.Pages
     public class AddRemoveElementsPage : GeneralPage
     {
         public AddRemoveElementsPage(BrowserDriver browser)
-            : base(browser, "http://127.0.0.1:7080/add_remove_elements/")
+            : base(browser, "/add_remove_elements/")
         { }
 
         public void AddElement()
