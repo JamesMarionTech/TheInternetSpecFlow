@@ -19,21 +19,21 @@ namespace TheInternetSpecFlow.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [Xunit.TraitAttribute("Category", "BrokenImages_Feature")]
-    public partial class BrokenImagesFeature : object, Xunit.IClassFixture<BrokenImagesFeature.FixtureData>, System.IDisposable
+    [Xunit.TraitAttribute("Category", "Checkboxes_Feature")]
+    public partial class CheckboxesFeature : object, Xunit.IClassFixture<CheckboxesFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = new string[] {
-                "BrokenImages_Feature"};
+                "Checkboxes_Feature"};
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "BrokenImages.feature"
+#line 1 "Checkboxes.feature"
 #line hidden
         
-        public BrokenImagesFeature(BrokenImagesFeature.FixtureData fixtureData, TheInternetSpecFlow_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public CheckboxesFeature(CheckboxesFeature.FixtureData fixtureData, TheInternetSpecFlow_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -42,10 +42,9 @@ namespace TheInternetSpecFlow.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "BrokenImages", "Broken images (in this case) are img elements with a src URL that returns a 404 H" +
-                    "TTP error code.\r\n\r\nOn the /broken_images page, \r\n  /asdf.jpg and /hjkl.jpg retur" +
-                    "n 404, and\r\n  /img/avatar-blank.jpg returns 200", ProgrammingLanguage.CSharp, new string[] {
-                        "BrokenImages_Feature"});
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Checkboxes", "A page with two checkboxes that gain an attribute named \"checked\" using JavaScrip" +
+                    "t.\r\n\r\nThe second checkbox is checked by default.", ProgrammingLanguage.CSharp, new string[] {
+                        "Checkboxes_Feature"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -85,67 +84,26 @@ namespace TheInternetSpecFlow.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Number of images on the page is 3")]
-        [Xunit.TraitAttribute("FeatureTitle", "BrokenImages")]
-        [Xunit.TraitAttribute("Description", "Number of images on the page is 3")]
-        [Xunit.TraitAttribute("Category", "BrokenImages_Scenario")]
-        public virtual void NumberOfImagesOnThePageIs3()
-        {
-            string[] tagsOfScenario = new string[] {
-                    "BrokenImages_Scenario"};
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Number of images on the page is 3", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 10
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 11
-    testRunner.Given("the number of image elements on the page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 12
-    testRunner.Then("the number of image elements should be 3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.SkippableTheoryAttribute(DisplayName="The image elements return the intended status codes")]
-        [Xunit.TraitAttribute("FeatureTitle", "BrokenImages")]
-        [Xunit.TraitAttribute("Description", "The image elements return the intended status codes")]
-        [Xunit.TraitAttribute("Category", "BrokenImages_Scenario")]
-        [Xunit.InlineDataAttribute("/asdf.jpg", "404", new string[0])]
-        [Xunit.InlineDataAttribute("/hjkl.jpg", "404", new string[0])]
-        [Xunit.InlineDataAttribute("/img/avatar-blank.jpg", "200", new string[0])]
-        public virtual void TheImageElementsReturnTheIntendedStatusCodes(string path, string result, string[] exampleTags)
+        [Xunit.SkippableTheoryAttribute(DisplayName="Clicking all checkboxes toggles their checked attributes")]
+        [Xunit.TraitAttribute("FeatureTitle", "Checkboxes")]
+        [Xunit.TraitAttribute("Description", "Clicking all checkboxes toggles their checked attributes")]
+        [Xunit.TraitAttribute("Category", "Checkboxes_Scenario")]
+        [Xunit.InlineDataAttribute("1", "true", new string[0])]
+        [Xunit.InlineDataAttribute("2", "false", new string[0])]
+        public virtual void ClickingAllCheckboxesTogglesTheirCheckedAttributes(string num, string state, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "BrokenImages_Scenario"};
+                    "Checkboxes_Scenario"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("Path", path);
-            argumentsOfScenario.Add("Result", result);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The image elements return the intended status codes", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 15
+            argumentsOfScenario.Add("num", num);
+            argumentsOfScenario.Add("state", state);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Clicking all checkboxes toggles their checked attributes", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -165,14 +123,60 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 16
-    testRunner.Given(string.Format("an image with a src of {0} exists on the page", path), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 9
+    testRunner.When(string.Format("checkbox {0} is clicked", num), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 17
-    testRunner.When(string.Format("I send get an HTTP Response Status Code from the {0} img src URL", path), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 10
+    testRunner.Then(string.Format("checkbox {0}\'s checked state should be {1}", num, state), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableTheoryAttribute(DisplayName="Clicking all checkboxes twice keeps their original checked attributes")]
+        [Xunit.TraitAttribute("FeatureTitle", "Checkboxes")]
+        [Xunit.TraitAttribute("Description", "Clicking all checkboxes twice keeps their original checked attributes")]
+        [Xunit.TraitAttribute("Category", "Checkboxes_Scenario")]
+        [Xunit.InlineDataAttribute("1", "false", new string[0])]
+        [Xunit.InlineDataAttribute("2", "true", new string[0])]
+        public virtual void ClickingAllCheckboxesTwiceKeepsTheirOriginalCheckedAttributes(string num, string state, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "Checkboxes_Scenario"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("num", num);
+            argumentsOfScenario.Add("state", state);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Clicking all checkboxes twice keeps their original checked attributes", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 18
-    testRunner.Then(string.Format("the HTTP Response Status Code for the image should be {0}", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 19
+    testRunner.When(string.Format("checkbox {0} is clicked twice", num), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 20
+    testRunner.Then(string.Format("checkbox {0}\'s checked state should be {1}", num, state), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -185,12 +189,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                BrokenImagesFeature.FeatureSetup();
+                CheckboxesFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                BrokenImagesFeature.FeatureTearDown();
+                CheckboxesFeature.FeatureTearDown();
             }
         }
     }
