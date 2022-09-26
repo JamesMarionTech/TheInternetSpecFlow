@@ -118,7 +118,7 @@ this.ScenarioInitialize(scenarioInfo);
     testRunner.Given("an initial number of elements", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 10
-    testRunner.Then("there should be a different number of elements within 1 page refreshes", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("there should be a different number of elements within 10 page refreshes", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
